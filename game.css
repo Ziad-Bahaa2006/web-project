@@ -104,10 +104,11 @@ body {
 
 .footer {
     text-align: center;
-    padding: 20px;
     background: linear-gradient(to right, #8b0000, black);
-    margin-top: 10px;
+    padding: 10px;
+    margin-top: 20px;
     border-radius: 10px;
+    border-top: 2px 
 }
 
 

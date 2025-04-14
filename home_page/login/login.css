@@ -9,13 +9,13 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url(bg.jpg) no-repeat;
+    background: url(bg2.jpg) no-repeat;
     background-position: center;
     background-size: cover;
 }
 .wrapper{
     width: 420px;
-    color: black;
+    color: white;
     border-radius: 12px;
     padding: 30px 40px;
     border: 2px solid rgba(225, 225, 225, .2);
@@ -44,7 +44,7 @@ body{
     padding: 20px 45px 20px 20px;
 }
 .input-box input::placeholder{
-    color: black;
+    color: white;
 }
 .input-box i{
     position: absolute;
@@ -60,11 +60,11 @@ body{
     margin: -15px 0 15px;
 }
 .remmber-forget label input{
-    accent-color: black;
+    accent-color: white;
     margin-right: 3px;
 }
 .remmber-forget a{
-    color: black;
+    color: white;
     text-decoration: none;
 }
 .remmber-forget a:hover{
@@ -89,7 +89,7 @@ body{
     margin: 20px 0 15px;
 }
 .register-link p a{
-    color: black;
+    color: white;
     text-decoration: none;
     font-weight: 600;
 }

@@ -16,6 +16,7 @@ header {
     padding: 20px;
     text-align: center;
     border-bottom: 2px solid #ff0000;
+    position: relative;
 }
 
 header h1 {
@@ -155,4 +156,67 @@ footer {
     border-top: 2px solid #ff0000;
     border-radius: 10px;
     color: #fff;
+}
+
+/*part of profile icon */
+.profile{
+    position: absolute;
+    top: 40px;
+    right: 30px;
+}
+
+.profile-icon{
+    width: 40px;
+    height: 40px;
+    background-color: #1a1a1a;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    font-size: 30px;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.profile-icon:hover{
+    background-color: #333;
+    transform: scale(1.1);
+}
+
+.menu{
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #333;
+    border: 1px solid #ff3b3b;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    min-width: 160px;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.menu a {
+    display: block;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 8px;
+}
+
+.menu a:hover{
+    background-color: #ff0000;
+    color: #fff;
+}
+
+.profile-icon.active + .menu{
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }

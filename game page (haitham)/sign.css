@@ -60,6 +60,36 @@ text-shadow: black;
     text-shadow: 0 0 10px rgb(203, 16, 16);
     cursor: pointer;
   }
+  .input-pass {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    font-size: 16px;
+    color: white;
+    margin-top: 10px;
+    cursor: pointer;
+    text-align: left;
+  }
+  
+  .input-pass input[type="checkbox"] {
+    order: -1;
+    width: 16px;
+    height: 16px;
+    accent-color: #ff007f; 
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .input-pass input[type="checkbox"]:hover {
+    transform: scale(1.2); 
+  }
+  
+
+
+  
+
   .footer {
     color: white;                
     text-align: center;         

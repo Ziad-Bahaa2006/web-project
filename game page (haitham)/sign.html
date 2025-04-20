@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sign up</title>
     <link rel="stylesheet" href="sign.css">
+    <script src="./sign.js"> </script>
 </head>
 <body>
     <h1 class="top">Fight Arena</h1>
@@ -16,6 +17,12 @@
                       <input type="email" placeholder=" email" required><br>
                         <input type="tel" placeholder=" phone" required>
                          <input type="password" placeholder="password" id="password" name="password" required><br>
+                         <div id="strengthMessage" style="color: white; font-weight: bold;"></div>
+                         <div class="input-pass"> <label for="check">  
+                            Show/Hide password  
+                         </label>
+                            <input type="checkbox" name="check" id="check">
+                        </div>
                          <div  class="gender">
                         <input type="radio" id="male" name="gender" value="male" >
                         <label for="male"> male  </label>

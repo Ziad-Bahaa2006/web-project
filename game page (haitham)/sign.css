@@ -51,7 +51,12 @@ text-shadow: black;
     color: white;
   }
   #s2 {
-    color:black;
+    color: black;
+    transition: all 0.3s ease;
+  }
+
+  #s3 {
+    color: white;
     transition: all 0.3s ease;
   }
   
@@ -60,6 +65,12 @@ text-shadow: black;
     text-shadow: 0 0 10px rgb(203, 16, 16);
     cursor: pointer;
   }
+  #s3:hover {
+    color: rgb(228, 28, 18);
+    text-shadow: 0 0 10px rgb(203, 16, 16);
+    cursor: pointer;
+  }
+
   .input-pass {
     display: flex;
     flex-direction: row;

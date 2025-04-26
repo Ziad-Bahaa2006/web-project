@@ -27,8 +27,8 @@ window.onload = function () {
         document.getElementById("strengthMessage").textContent = strength;
         console.log(strength);
     });
-
 };
+
 
    
   

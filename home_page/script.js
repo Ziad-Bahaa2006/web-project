@@ -1,4 +1,3 @@
-//this is script for list of the profile droplist in home page
 document.addEventListener("DOMContentLoaded", function(){
 const profileIcon = document.querySelector(".profile-icon");
 

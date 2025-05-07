@@ -15,7 +15,7 @@ padding: 0;
 .gender{
 font-size: medium;
 font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-text-shadow: black;
+text-shadow: 2px 2px 5px black;
 }
 
 .s{
@@ -97,10 +97,6 @@ text-shadow: black;
     transform: scale(1.2); 
   }
   
-
-
-  
-
   .footer {
     color: white;                
     text-align: center;         

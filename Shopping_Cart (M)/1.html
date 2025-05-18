@@ -23,39 +23,36 @@
         </thead>
         <tbody id="cart-body">
             <tr>
-                <td><img src="" alt="" width="100"></td>
-                <td></td>
-                <td class="price"></td>
+                <td><img src="download.jpeg" alt="This is Photo" width="100"></td>
+                <td><h3>Valorant</h3></td>
+                <td class="price">30$</td>
                 <td>
                     <button class="delete-btn">Delete</button>
-                    <button class="buy-btn" onclick="location.href='payment.html'">Buy</button>
-
+                    <button class="buy-btn">Buy</button>
                 </td>
             </tr>
             <tr>
-                <td><img src="" alt="" width="100"></td>
-                <td></td>
-                <td class="price"></td>
+                <td><img src="download (1).jpeg" alt="This is Photo" width="100"></td>
+                <td><h3>FC25</h3></td>
+                <td class="price">25$</td>
                 <td>
                     <button class="delete-btn">Delete</button>
-                    <button class="buy-btn" onclick="location.href='payment.html'">Buy</button>
-
+                    <button class="buy-btn">Buy</button>
                 </td>
             </tr>
             <tr>
-                <td><img src="" alt="" width="100"></td>
-                <td></td>
-                <td class="price"></td>
+                <td><img src="download (2).jpeg" alt="This is Photo" width="100"></td>
+                <td><h3>GTA V</h3></td>
+                <td class="price">20$</td>
                 <td>
-                    <button class="delete-btn" href="">Delete</button>
-                    <button class="buy-btn" onclick="location.href='payment.html'">Buy</button>
-
+                    <button class="delete-btn">Delete</button>
+                    <button class="buy-btn">Buy</button>
                 </td>
             </tr>
         </tbody>
     </table>
 
-    <div class="total-price">
+    <div class="total-price" style="text-align: center; margin-top: 20px;">
         <strong>Total: $<span id="total">0</span></strong>
     </div>
 
@@ -70,7 +67,7 @@
             button.addEventListener("click", function () {
                 let row = this.closest("tr");
                 let price = parseInt(row.querySelector(".price").textContent.replace("$", ""));
-
+                
                 if (row.classList.contains("bought")) {
                     total -= price;
                 }
@@ -90,6 +87,11 @@
                     row.classList.add("bought");
                     this.style.backgroundColor = "gray";
                     this.textContent = "Bought";
+
+                    
+                    setTimeout(() => {
+                        location.href = 'payment.html';
+                    }, 500); 
                 }
 
                 updateTotal();

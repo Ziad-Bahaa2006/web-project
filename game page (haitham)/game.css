@@ -24,16 +24,16 @@ transform: scale(2.1);
 
 
 body {
-    background-color: black;
-    color: white;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        padding: 0;
 }
 
 
 .header {
-    background: linear-gradient(to right, #8b0000, black);
+   background: linear-gradient(to right, #000000, #8b0000, #ff0000);
     padding: 20px;
     text-align: center;
 }
@@ -128,6 +128,7 @@ body {
     margin-top: 20px;
     border-radius: 10px;
     border-top: 2px 
+    color(white)
 }
 
 

@@ -58,9 +58,18 @@ button {
 }
 
 .buy-btn {
-    background-color:#034d03; 
+    background-color:#034d03;     
     color: white;
+
 }
+
+.delete-btn:hover,
+.buy-btn:hover {
+    opacity: 0.8;
+}
+ 
+
+
 
 .buy-btn:hover {
     background-color: #05e605;

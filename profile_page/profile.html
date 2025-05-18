@@ -1,0 +1,185 @@
+<script type="text/javascript">
+    var gk_isXlsx = false;
+    var gk_xlsxFileLookup = {};
+    var gk_fileData = {};
+    function filledCell(cell) {
+        return cell !== '' && cell != null;
+    }
+    function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                    row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                    headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+    }
+</script>
+
+<!--Medo : I made the php file connect ot the database -->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">Fight Arena</div>
+            <div class="nav-links">
+                <a href="../home_page/home_page.html"><i class="fas fa-home"></i> Home</a>
+                <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                <a href="../game page (haitham)/gamepage.html"><i class="fas fa-gamepad"></i> Games</a>
+                <a href="index.html#leaderboard"><i class="fas fa-trophy"></i> Leaderboard</a>
+                <a href="../About us/index.html"><i class="fas fa-info-circle"></i> About</a>
+                <a href="../contact us page/contactus.html"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="../home_page/login/login.html" onclick="login()"><i class="fas fa-sign-in-alt"></i> Login</a>
+                <a href="../game page (haitham)/sign.html" onclick="signup()"><i class="fas fa-user-plus"></i> Sign
+                    Up</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="profile-header">
+            <img src="main.jpg" alt="Player Avatar" class="profile-pic">
+            <div class="profile-info">
+                <h1>Player Name</h1>
+                <p>Level: 45 | Member Since: January 2023</p>
+                <p>Bio: Professional player in strategy and shooter games</p>
+            </div>
+        </div>
+
+        <button class="update-button" onclick="updateStats()">Complete Match</button>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Matches Played</h3>
+                <p id="matches">128</p>
+            </div>
+            <div class="stat-card">
+                <h3>Win Rate</h3>
+                <p id="winrate">68%</p>
+            </div>
+            <div class="stat-card">
+                <h3>Points</h3>
+                <p id="points">15,230</p>
+            </div>
+            <div class="stat-card">
+                <h3>Achievements</h3>
+                <p id="achievements">42</p>
+            </div>
+        </div>
+
+        <div class="achievements">
+            <h2>Achievements</h2>
+            <div class="achievement-list" id="achievement-list">
+                <div class="achievement-item">
+                    <img src="https://via.placeholder.com/50" alt="Achievement" class="achievement-icon">
+                    <div class="achievement-text">
+                        <h4>Arena Champion</h4>
+                        <p>Won 10 consecutive matches</p>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <img src="https://via.placeholder.com/50" alt="Achievement" class="achievement-icon">
+                    <div class="achievement-text">
+                        <h4>Season Sniper</h4>
+                        <p>Achieved 100 precise hits</p>
+                    </div>
+                </div>
+                <div class="achievement-item">
+                    <img src="https://via.placeholder.com/50" alt="Achievement" class="achievement-icon">
+                    <div class="achievement-text">
+                        <h4>Grand Strategist</h4>
+                        <p>Completed 50 strategic missions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Fight Arena. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function login() {
+            alert('Login to your Fight Arena account!');
+            // Replace with actual login logic or redirect
+        }
+
+        function signup() {
+            alert('Sign up to join the Fight Arena community!');
+            // Replace with actual signup logic or redirect
+        }
+
+        let matches = 128;
+        let points = 15230;
+        let achievements = 42;
+        let wins = Math.round(matches * 0.68); // Assuming 68% win rate
+
+        function updateStats() {
+            matches += 1;
+            points += 100; // Add 100 points per match
+            const didWin = Math.random() > 0.3; // 70% chance to win
+            if (didWin) wins += 1;
+
+            // Update win rate
+            const winRate = ((wins / matches) * 100).toFixed(1);
+
+            // Check for new achievement
+            if (matches === 130) {
+                const newAchievement = document.createElement('div');
+                newAchievement.className = 'achievement-item';
+                newAchievement.innerHTML = `
+                    <img src="https://via.placeholder.com/50" alt="Achievement" class="achievement-icon">
+                    <div class="achievement-text">
+                        <h4>Match Master</h4>
+                        <p>Played 130 matches</p>
+                    </div>
+                `;
+                document.getElementById('achievement-list').appendChild(newAchievement);
+                achievements += 1;
+            }
+
+            // Update DOM
+            document.getElementById('matches').textContent = matches;
+            document.getElementById('points').textContent = points.toLocaleString();
+            document.getElementById('winrate').textContent = `${winRate}%`;
+            document.getElementById('achievements').textContent = achievements;
+        }
+    </script>
+</body>
+
+</html>

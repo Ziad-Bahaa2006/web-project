@@ -102,34 +102,48 @@
     </div>
 
     <div class="container">
-        <section class="featured-games" id="games">
-            <h2>Featured Games</h2>
-            <div class="games-grid" id="games-grid">
-                <div class="game-card" data-title="BattleForge">
-                    <img src="https://via.placeholder.com/300x200" alt="Game 1">
-                    <div class="game-card-content">
-                        <h3>BattleForge</h3>
-                        <p>Engage in intense multiplayer battles with strategic depth.</p>
-                        <button onclick="playGame('BattleForge')">Play Now</button>
-                    </div>
-                </div>
-                <div class="game-card" data-title="StarSniper">
-                    <img src="https://via.placeholder.com/300x200" alt="Game 2">
-                    <div class="game-card-content">
-                        <h3>StarSniper</h3>
-                        <p>Master precision shooting in this fast-paced FPS.</p>
-                        <button onclick="playGame('StarSniper')">Play Now</button>
-                    </div>
-                </div>
-                <div class="game-card" data-title="WarTactics">
-                    <img src="https://via.placeholder.com/300x200" alt="Game 3">
-                    <div class="game-card-content">
-                        <h3>WarTactics</h3>
-                        <p>Command your army in epic strategy showdowns.</p>
-                        <button onclick="playGame('WarTactics')">Play Now</button>
-                    </div>
+<?php
+// الاتصال بقاعدة البيانات
+$host = 'localhost';
+$dbname = 'games11';  // اسم قاعدة البيانات
+$username = 'root';   // غالباً root
+$password = '';       // في XAMPP بتكون فاضية
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
+}
+
+// جلب الألعاب
+$stmt = $pdo->query("SELECT * FROM games");
+$games = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
+<section class="featured-games" id="games">
+    <h2>Featured Games</h2>
+    <div class="games-grid" id="games-grid">
+        <?php foreach ($games as $game): ?>
+            <div class="game-card" data-title="<?= htmlspecialchars($game['name']) ?>">
+                <img src="https://via.placeholder.com/300x200" alt="<?= htmlspecialchars($game['name']) ?>">
+                <div class="game-card-content">
+                    <h3><?= htmlspecialchars($game['name']) ?></h3>
+                    <p><?= htmlspecialchars($game['Description']) ?></p>
+                    <p><strong>Price:</strong> $<?= htmlspecialchars($game['price']) ?></p>
+                    <button onclick="playGame('<?= htmlspecialchars($game['name']) ?>')">Play Now</button>
                 </div>
             </div>
+        <?php endforeach; ?>
+    </div>
+    <p class="no-results" id="no-results">No games found matching your search.</p>
+</section>
+
+<script>
+    function playGame(gameTitle) {
+        alert("Starting game: " + gameTitle);
+    }
+</script>
+
             <p class="no-results" id="no-results">No games found matching your search.</p>
         </section>
 

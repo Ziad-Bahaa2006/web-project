@@ -1,11 +1,11 @@
 <script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
+    var gk_isXlsx = false;
+    var gk_xlsxFileLookup = {};
+    var gk_fileData = {};
+    function filledCell(cell) {
+        return cell !== '' && cell != null;
+    }
+    function loadFileData(filename) {
         if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
             try {
                 var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
@@ -19,11 +19,11 @@
 
                 // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
                 var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                    row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
                 );
                 // Fallback
                 if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
+                    headerRowIndex = 0;
                 }
 
                 // Convert filtered JSON back to CSV
@@ -36,12 +36,14 @@
             }
         }
         return gk_fileData[filename] || "";
-        }
-        </script>
-        
+    }
+</script>
+
+<!--Medo : I made the php file connect ot the database -->
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,6 +51,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
         <nav>
@@ -61,7 +64,8 @@
                 <a href="../About us/index.html"><i class="fas fa-info-circle"></i> About</a>
                 <a href="../contact us page/contactus.html"><i class="fas fa-envelope"></i> Contact</a>
                 <a href="../home_page/login/login.html" onclick="login()"><i class="fas fa-sign-in-alt"></i> Login</a>
-                <a href="../game page (haitham)/sign.html" onclick="signup()"><i class="fas fa-user-plus"></i> Sign Up</a>
+                <a href="../game page (haitham)/sign.html" onclick="signup()"><i class="fas fa-user-plus"></i> Sign
+                    Up</a>
             </div>
         </nav>
     </header>
@@ -177,4 +181,5 @@
         }
     </script>
 </body>
+
 </html>

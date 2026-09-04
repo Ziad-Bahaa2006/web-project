@@ -1,0 +1,23 @@
+# Environment & secrets
+.env
+.env.local
+*.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+
+# Dependencies (if you add any later, e.g. via Composer/npm)
+/vendor/
+/node_modules/
+
+# PHP local server files
+*.pyc

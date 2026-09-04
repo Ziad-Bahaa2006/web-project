@@ -8,26 +8,26 @@ PHP backend project.
 
 | Page | Description |
 |---|---|
-| `home_page/` | Landing page — featured games, news, store preview, leaderboard |
-| `game page (haitham)/` | Game listing and sign-up flow |
-| `profile_page/` | User profile with stats pulled from the database |
-| `Shopping_Cart (M)/` | Cart and payment flow |
-| `contact us page/` | Contact form |
-| `About us/` | About page |
+| `pages/home/` | Landing page — featured games, news, store preview, leaderboard |
+| `pages/game/` | Game listing and sign-up flow |
+| `pages/profile/` | User profile with stats pulled from the database |
+| `pages/cart/` | Cart and payment flow |
+| `pages/contact/` | Contact form |
+| `pages/about/` | About page |
 | `pages/game-details/` | Individual game details page |
 
 ## Tech stack
 
 - **Frontend:** HTML, CSS, vanilla JavaScript
 - **Backend:** PHP (`mysqli` and `PDO` for MySQL, `pg_connect` for PostgreSQL)
-- **Database:** MySQL / PostgreSQL (see `profile_page/database/players_info.sql` for schema)
+- **Database:** MySQL / PostgreSQL (see `backend/database/players_info.sql` for schema)
 
 ## Running locally
 
 1. Install [XAMPP](https://www.apachefriends.org/) (or any Apache + MySQL + PHP stack).
 2. Copy this repo into your `htdocs` folder.
 3. Create the databases referenced in the PHP files and import
-   `profile_page/database/players_info.sql`.
+   `backend/database/players_info.sql`.
 4. Copy `.env.example` to `.env` and fill in your local database credentials
    (see below).
 5. Start Apache + MySQL/PostgreSQL from the XAMPP control panel.
